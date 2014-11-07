@@ -14,10 +14,7 @@ func TestNew(t *testing.T) {
 	s := stattrack.New("TestNew: testing New function")
 
 	lt := New()
-	lt.Pv("FIRST", 0)
-	// second call doesn't get written to file
-	lt.Pv("SECOND", 0)
-	if (lt != LogTrack{""}) {
+	if (lt != LogTrack{"", true}) {
 		s.Warn("TestNew: object returned from New() is not empty!")
 		t.Fail()
 	} else {

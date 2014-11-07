@@ -26,6 +26,7 @@ import (
 //
 type LogTrack struct {
 	log_file string
+	To_Stdout bool
 }
 
 var conf sconf.Sconf = sconf.Inst()
@@ -47,7 +48,7 @@ func (l *LogTrack) Set_log_file_path(file_path string) {
 
 func New() LogTrack {
 
-	l := LogTrack{""}
+	l := LogTrack{"", true}
 
 	fix_ldlf_path()
 	fix_lvl_range()
@@ -79,7 +80,7 @@ func (l *LogTrack) Pv(msg string, v int) {
 		if conf["logtrack_verbosity_level"].(int) >= 3 {
 			newmsg = "[" + seestack.ShortExclude(1) + "] "
 		}
-		newmsg += msg
+		newmsg += msg + "\n"
 
 		var file_path string
 		if l.log_file != "" {
@@ -93,7 +94,7 @@ func (l *LogTrack) Pv(msg string, v int) {
 		//stat.Message = "file_path: " + file_path
 		//statdist.Handle(stat)
 
-		logdist.Message(file_path, newmsg)
+		logdist.Message(file_path, newmsg, l.To_Stdout)
 	}
 	return
 }
