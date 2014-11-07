@@ -25,7 +25,7 @@ import (
 // 		0 - 	do not log anything
 //
 type LogTrack struct {
-	log_file string
+	log_file  string
 	To_Stdout bool
 }
 

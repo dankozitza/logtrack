@@ -61,6 +61,6 @@ func TestPv(t *testing.T) {
 
 func TestLogDist(t *testing.T) {
 	ldh := logdist.LogDistHandler("stdout")
-	http.Handle("/", ldh)
+	http.Handle("/stdout", ldh)
 	http.ListenAndServe("localhost:9000", nil)
 }
