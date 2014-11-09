@@ -1,0 +1,6 @@
+[testing.go:422::logtrack_test.go:28] test print
+[testing.go:422::logtrack_test.go:47] logtrack_verbosity_level = 3
+[testing.go:422::logtrack_test.go:50] printing with verbose 0
+[testing.go:422::logtrack_test.go:51] printing with verbose 1
+[testing.go:422::logtrack_test.go:52] printing with verbose 2
+[testing.go:422::logtrack_test.go:53] printing with verbose 3
