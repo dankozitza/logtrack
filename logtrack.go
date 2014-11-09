@@ -19,9 +19,9 @@ import (
 //    verbosity levels:
 //       5 -   log everything
 //       4 -    log everything other than level 5 messages
-//         3 -     default, log normal messages that are expected to be seen
-//         2 -   do not log the stack in each message
-//         1 -   do not log anything other than level 0 and level 1 messages
+//       3 -     default, log normal messages that are expected to be seen
+//       2 -   do not log the stack in each message
+//       1 -   do not log anything other than level 0 and level 1 messages
 //       0 -    do not log anything
 //
 type LogTrack struct {
@@ -64,8 +64,8 @@ func New() LogTrack {
 //
 //       5 - low priority messages that are only printed when
 //           logtrack_verbosity_level is set to 5
-//         4 - ...
-//         3 - normal priority messages
+//       4 - ...
+//       3 - normal priority messages
 //       2 - messages that can be printed with no ShortStack
 //       1 - ...
 //       0 - high priority messages that will always be printed
