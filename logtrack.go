@@ -17,12 +17,12 @@ import (
 // 'logtrack_verbosity_level'. It is an integer ranging from 0 to 5
 //
 //    verbosity levels:
-//       5 -   log everything
-//       4 -    log everything other than level 5 messages
-//       3 -     default, log normal messages that are expected to be seen
-//       2 -   do not log the stack in each message
-//       1 -   do not log anything other than level 0 and level 1 messages
-//       0 -    do not log anything
+//       5 - log everything
+//       4 - log everything other than level 5 messages
+//       3 - default, log messages that are expected to be seen
+//       2 - do not log the stack in each message
+//       1 - do not log anything other than level 0 and level 1 messages
+//       0 - do not log anything
 //
 type LogTrack struct {
 	log_file  string
