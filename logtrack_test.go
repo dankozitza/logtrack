@@ -1,13 +1,14 @@
 package logtrack
 
 import (
-	"testing"
-	//"fmt"
+	"fmt"
 	"github.com/dankozitza/logdist"
 	"github.com/dankozitza/sconf"
 	"github.com/dankozitza/stattrack"
+	"testing"
 	//"github.com/dankozitza/seestack"
 	"net/http"
+	"syscall"
 )
 
 func TestNew(t *testing.T) {
@@ -62,5 +63,11 @@ func TestPv(t *testing.T) {
 func TestLogDist(t *testing.T) {
 	ldh := logdist.LogDistHandler("stdout")
 	http.Handle("/stdout", ldh)
-	http.ListenAndServe("localhost:9000", nil)
+	//http.ListenAndServe("localhost:9000", nil)
+}
+
+func TestClean(t *testing.T) {
+	file_path := "logtrack_testing.log"
+	fmt.Println("TestClean: removing", file_path)
+	syscall.Exec("/usr/bin/rm", []string{"rm", file_path}, nil)
 }
