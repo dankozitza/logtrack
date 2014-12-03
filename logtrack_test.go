@@ -5,10 +5,9 @@ import (
 	"github.com/dankozitza/logdist"
 	"github.com/dankozitza/sconf"
 	"github.com/dankozitza/stattrack"
-	"testing"
-	//"github.com/dankozitza/seestack"
 	"net/http"
 	"syscall"
+	"testing"
 )
 
 func TestNew(t *testing.T) {
@@ -48,12 +47,12 @@ func TestPv(t *testing.T) {
 	lt.P("logtrack_verbosity_level = 3")
 	conf["logtrack_verbosity_level"] = 3
 
-	lt.Pv("printing with verbose 0", 0)
-	lt.Pv("printing with verbose 1", 1)
-	lt.Pv("printing with verbose 2", 2)
-	lt.Pv("printing with verbose 3", 3)
-	lt.Pv("printing with verbose 4", 4)
-	lt.Pv("printing with verbose 5", 5)
+	lt.Pv(0, "printing with verbose 0")
+	lt.Pv(1, "printing with verbose 1")
+	lt.Pv(2, "printing with verbose 2")
+	lt.Pv(3, "printing with verbose 3")
+	lt.Pv(4, "printing with verbose 4")
+	lt.Pv(5, "printing with verbose 5")
 
 	//conf := sconf.Inst()
 

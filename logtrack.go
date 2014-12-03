@@ -70,17 +70,18 @@ func New() LogTrack {
 //       1 - ...
 //       0 - high priority messages that will always be printed
 //
-func (l *LogTrack) Pv(msg string, v int) {
+func (l *LogTrack) Pv(v int, msg ...interface{}) {
 
 	fix_lvl_range()
 
 	if conf["logtrack_verbosity_level"].(int) >= v {
-		var newmsg string
 
 		if conf["logtrack_verbosity_level"].(int) >= 3 {
-			newmsg = "[" + seestack.ShortExclude(1) + "] "
+			prefix := "[" + seestack.ShortExclude(1) + "] "
+			msg = append(msg, 0)
+			copy(msg[1:], msg[0:])
+			msg[0] = prefix
 		}
-		newmsg += msg + "\n"
 
 		var file_path string
 		if l.log_file != "" {
@@ -90,11 +91,7 @@ func (l *LogTrack) Pv(msg string, v int) {
 			file_path = conf["logtrack_default_log_file"].(string)
 		}
 
-		//stat.ShortStack = seestack.Short()
-		//stat.Message = "file_path: " + file_path
-		//statdist.Handle(stat)
-
-		logdist.Message(file_path, newmsg, l.To_Stdout)
+		logdist.Message(file_path, l.To_Stdout, msg...)
 	}
 	return
 }
@@ -103,8 +100,8 @@ func (l *LogTrack) Pv(msg string, v int) {
 //
 // calls Pv with default verbose level 3
 //
-func (l *LogTrack) P(msg string) {
-	l.Pv(msg, 3)
+func (l *LogTrack) P(msg ...interface{}) {
+	l.Pv(3, msg...)
 	return
 }
 
