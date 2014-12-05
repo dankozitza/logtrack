@@ -54,13 +54,11 @@ func TestPv(t *testing.T) {
 	lt.Pv(4, "printing with verbose 4")
 	lt.Pv(5, "printing with verbose 5")
 
-	//conf := sconf.Inst()
-
 	s.Pass("TestPv: did it work?")
 }
 
 func TestLogDist(t *testing.T) {
-	ldh := logdist.LogDistHandler("stdout")
+	ldh := logdist.HTTPHandler("stdout")
 	http.Handle("/stdout", ldh)
 	//http.ListenAndServe("localhost:9000", nil)
 }

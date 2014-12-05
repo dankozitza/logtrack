@@ -106,6 +106,8 @@ func (l *LogTrack) P(msg ...interface{}) {
 	return
 }
 
+// TODO: make these fixer functions use a type switch
+
 // fix_ldlf_path
 //
 // Ensures that logtrack_default_log_file is defined and usable
