@@ -29,7 +29,6 @@ type LogTrack struct {
 	To_Stdout bool
 }
 
-var conf sconf.Sconf = sconf.Inst()
 var stat statdist.Stat = statdist.Stat{
 	statdist.GetId(),
 	"INIT",
@@ -72,6 +71,8 @@ func New() LogTrack {
 //
 func (l *LogTrack) Pv(v int, msg ...interface{}) {
 
+	conf := sconf.Inst()
+
 	fix_lvl_range()
 
 	if conf["logtrack_verbosity_level"].(int) >= v {
@@ -110,6 +111,7 @@ func (l *LogTrack) P(msg ...interface{}) {
 // Ensures that logtrack_default_log_file is defined and usable
 //
 func fix_ldlf_path() {
+	conf := sconf.Inst()
 	if conf["logtrack_default_log_file"] == nil {
 
 		// set the default log file if not set
@@ -130,6 +132,7 @@ func fix_ldlf_path() {
 //   Ensures that logtrack_verbosity_level is defined and usable
 //
 func fix_lvl_range() {
+	conf := sconf.Inst()
 	if conf["logtrack_verbosity_level"] == nil {
 		conf["logtrack_verbosity_level"] = 3
 
