@@ -25,7 +25,7 @@ import (
 //       0 - do not log anything
 //
 type LogTrack struct {
-	log_file  string
+	Log_file  string
 	To_Stdout bool
 }
 
@@ -38,11 +38,6 @@ var stat statdist.Stat = statdist.Stat{
 
 func init() {
 	statdist.Handle(stat)
-}
-
-func (l *LogTrack) Set_log_file_path(file_path string) {
-	l.log_file = file_path
-	return
 }
 
 func New() LogTrack {
@@ -85,8 +80,8 @@ func (l *LogTrack) Pv(v int, msg ...interface{}) {
 		}
 
 		var file_path string
-		if l.log_file != "" {
-			file_path = l.log_file
+		if l.Log_file != "" {
+			file_path = l.Log_file
 		} else {
 			fix_ldlf_path()
 			file_path = conf["logtrack_default_log_file"].(string)
